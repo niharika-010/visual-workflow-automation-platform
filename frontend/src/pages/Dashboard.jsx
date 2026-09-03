@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Header } from '../components/Header';
 import { Sidebar } from '../components/Sidebar';
@@ -7,14 +7,11 @@ import { EmptyWorkflows } from '../components/EmptyWorkflows';
 import { CreateWorkflowModal } from '../components/CreateWorkflowModal';
 import { ServicesStatusCard } from '../components/ServicesStatusCard';
 import { useWorkflowManagementStore } from '../store/useWorkflowManagementStore';
+import { fetchHealthStatus } from '../services/api';
 import {
   Plus,
   Search,
   Workflow,
-  Zap,
-  Activity,
-  CheckCircle2,
-  Clock,
   Loader2,
 } from 'lucide-react';
 
@@ -26,9 +23,25 @@ export const Dashboard = () => {
   const [activeFilter, setActiveFilter] = useState('All');
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const [healthData, setHealthData] = useState(null);
+  const [isHealthLoading, setIsHealthLoading] = useState(false);
+
+  const loadHealth = useCallback(async () => {
+    setIsHealthLoading(true);
+    try {
+      const data = await fetchHealthStatus(true);
+      setHealthData(data);
+    } catch (err) {
+      console.error('Failed to load health status:', err);
+    } finally {
+      setIsHealthLoading(false);
+    }
+  }, []);
+
   useEffect(() => {
     loadWorkflows();
-  }, [loadWorkflows]);
+    loadHealth();
+  }, [loadWorkflows, loadHealth]);
 
   const safeWorkflows = Array.isArray(workflows) ? workflows : [];
 
@@ -153,7 +166,11 @@ export const Dashboard = () => {
           )}
 
           {/* System Infrastructure Status */}
-          <ServicesStatusCard />
+          <ServicesStatusCard
+            healthData={healthData}
+            isLoading={isHealthLoading}
+            onRefresh={loadHealth}
+          />
 
         </main>
       </div>

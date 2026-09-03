@@ -50,6 +50,18 @@ export const fetchHealthStatus = async (includeDetails = true) => {
   }
 };
 
+export const testWorkerQueueApi = async () => {
+  try {
+    const response = await apiClient.post('/health/test-worker');
+    return response.data;
+  } catch (error) {
+    return {
+      status: 'error',
+      message: error.response?.data?.message || 'Failed to dispatch test job to BullMQ queue',
+    };
+  }
+};
+
 // Auth API Endpoints
 export const registerUser = async (userData) => {
   const response = await apiClient.post('/auth/register', userData);
