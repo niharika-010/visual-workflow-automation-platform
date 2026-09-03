@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080c14" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="1200" height="675" fill="url(#bgGrad)" />
+
+  <!-- Top Navigation Header -->
+  <rect x="0" y="0" width="1200" height="64" fill="#090d16" />
+  <line x1="0" y1="64" x2="1200" y2="64" stroke="#1e293b" stroke-width="1.5" />
+
+  <text x="24" y="38" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="16">← Execution Runs</text>
+  <text x="180" y="38" fill="#ffffff" font-family="system-ui, sans-serif" font-weight="900" font-size="18">Execution Run Detail</text>
+  <rect x="380" y="18" width="84" height="26" rx="13" fill="#10b981" fill-opacity="0.2" stroke="#10b981" stroke-opacity="0.4" />
+  <text x="394" y="35" fill="#34d399" font-family="system-ui, sans-serif" font-weight="800" font-size="11">✓ SUCCESS</text>
+
+  <!-- Left: Step Sequence List -->
+  <rect x="0" y="64" width="550" height="611" fill="#090d16" />
+  <line x1="550" y1="64" x2="550" y2="675" stroke="#1e293b" stroke-width="1.5" />
+
+  <text x="24" y="100" fill="#94a3b8" font-family="system-ui, sans-serif" font-weight="800" font-size="12">EXECUTION STEP SEQUENCE (4 STEPS)</text>
+
+  <!-- Step 1: Webhook -->
+  <rect x="24" y="120" width="502" height="64" rx="12" fill="#0f172a" stroke="#1e293b" opacity="0.8" />
+  <circle cx="50" cy="152" r="12" fill="#1e293b" />
+  <text x="46" y="156" fill="#ffffff" font-family="system-ui, sans-serif" font-weight="800" font-size="12">1</text>
+  <text x="74" y="148" fill="#ffffff" font-family="system-ui, sans-serif" font-weight="700" font-size="13">Node: n_webhook (Webhook)</text>
+  <text x="74" y="165" fill="#64748b" font-family="system-ui, sans-serif" font-size="11">Started: 12:40:14.010 PM</text>
+  <text x="450" y="156" fill="#34d399" font-family="system-ui, sans-serif" font-weight="800" font-size="12">✓ 15ms</text>
+
+  <!-- Step 2: IF Condition (Selected) -->
+  <rect x="24" y="196" width="502" height="64" rx="12" fill="#0d9488" fill-opacity="0.1" stroke="#0d9488" stroke-width="2" filter="url(#shadow)" />
+  <circle cx="50" cy="228" r="12" fill="#0d9488" />
+  <text x="46" y="232" fill="#ffffff" font-family="system-ui, sans-serif" font-weight="800" font-size="12">2</text>
+  <text x="74" y="224" fill="#ffffff" font-family="system-ui, sans-serif" font-weight="800" font-size="13">Node: n_if (IF Condition)</text>
+  <text x="74" y="241" fill="#2dd4bf" font-family="system-ui, sans-serif" font-size="11">Selected Branch: TRUE</text>
+  <text x="450" y="232" fill="#34d399" font-family="system-ui, sans-serif" font-weight="800" font-size="12">✓ 8ms</text>
+
+  <!-- Step 3: Send Email -->
+  <rect x="24" y="272" width="502" height="64" rx="12" fill="#0f172a" stroke="#1e293b" opacity="0.8" />
+  <circle cx="50" cy="304" r="12" fill="#1e293b" />
+  <text x="46" y="308" fill="#ffffff" font-family="system-ui, sans-serif" font-weight="800" font-size="12">3</text>
+  <text x="74" y="300" fill="#ffffff" font-family="system-ui, sans-serif" font-weight="700" font-size="13">Node: n_email (Send Email)</text>
+  <text x="74" y="317" fill="#64748b" font-family="system-ui, sans-serif" font-size="11">SMTP Delivery Completed</text>
+  <text x="450" y="308" fill="#34d399" font-family="system-ui, sans-serif" font-weight="800" font-size="12">✓ 65ms</text>
+
+  <!-- Step 4: Slack Alert -->
+  <rect x="24" y="348" width="502" height="64" rx="12" fill="#0f172a" stroke="#1e293b" opacity="0.8" />
+  <circle cx="50" cy="380" r="12" fill="#1e293b" />
+  <text x="46" y="384" fill="#ffffff" font-family="system-ui, sans-serif" font-weight="800" font-size="12">4</text>
+  <text x="74" y="376" fill="#ffffff" font-family="system-ui, sans-serif" font-weight="700" font-size="13">Node: n_slack (Slack Alert)</text>
+  <text x="74" y="393" fill="#64748b" font-family="system-ui, sans-serif" font-size="11">Posted to #general</text>
+  <text x="450" y="384" fill="#34d399" font-family="system-ui, sans-serif" font-weight="800" font-size="12">✓ 32ms</text>
+
+  <!-- Right: Selected Step Payload Inspector -->
+  <text x="580" y="100" fill="#ffffff" font-family="system-ui, sans-serif" font-weight="900" font-size="16">Step Payload Inspector (n_if)</text>
+  <text x="580" y="118" fill="#64748b" font-family="monospace" font-size="11">Step ID: step_892cca81-ae16-41e6-99a3</text>
+
+  <!-- Input Data Box -->
+  <text x="580" y="155" fill="#94a3b8" font-family="system-ui, sans-serif" font-weight="800" font-size="11">INPUT DATA PAYLOAD</text>
+  <rect x="580" y="165" width="590" height="150" rx="12" fill="#090d16" stroke="#1e293b" />
+  <text x="595" y="195" fill="#2dd4bf" font-family="monospace" font-size="12">{</text>
+  <text x="615" y="215" fill="#5eead4" font-family="monospace" font-size="12">"orderId": <tspan fill="#38bdf8">"ORD-1042"</tspan>,</text>
+  <text x="615" y="235" fill="#5eead4" font-family="monospace" font-size="12">"amount": <tspan fill="#f59e0b">250</tspan>,</text>
+  <text x="615" y="255" fill="#5eead4" font-family="monospace" font-size="12">"customer": <tspan fill="#38bdf8">"alex@enterprise.com"</tspan></text>
+  <text x="595" y="275" fill="#2dd4bf" font-family="monospace" font-size="12">}</text>
+
+  <!-- Output Data Box -->
+  <text x="580" y="345" fill="#94a3b8" font-family="system-ui, sans-serif" font-weight="800" font-size="11">OUTPUT DATA PAYLOAD</text>
+  <rect x="580" y="355" width="590" height="150" rx="12" fill="#090d16" stroke="#1e293b" />
+  <text x="595" y="385" fill="#34d399" font-family="monospace" font-size="12">{</text>
+  <text x="615" y="405" fill="#a7f3d0" font-family="monospace" font-size="12">"result": <tspan fill="#34d399">true</tspan>,</text>
+  <text x="615" y="425" fill="#a7f3d0" font-family="monospace" font-size="12">"nextHandle": <tspan fill="#38bdf8">"true"</tspan>,</text>
+  <text x="615" y="445" fill="#a7f3d0" font-family="monospace" font-size="12">"evaluatedValue": <tspan fill="#f59e0b">250</tspan></text>
+  <text x="595" y="465" fill="#34d399" font-family="monospace" font-size="12">}</text>
+</svg>

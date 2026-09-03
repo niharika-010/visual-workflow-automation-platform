@@ -4,6 +4,48 @@ A production-style, multi-tenant visual drag-and-drop workflow automation SaaS p
 
 ---
 
+## 📸 Platform Screenshots & Feature Demonstrations
+
+### 1. Workflows Workspace & SaaS Dashboard
+
+![Workflows Workspace Dashboard](screenshots/dashboard.svg)
+
+> **Figure 1**: Multi-tenant workspace dashboard displaying top-level metrics (*Total Workflows*, *Active Workflows*, *Draft Workflows*), real-time search filtering, status pills (`Active`, `Draft`, `Inactive`), and individual workflow cards with quick-action controls.
+
+---
+
+### 2. Visual Drag-and-Drop Workflow Builder
+
+![Visual Workflow Builder](screenshots/workflow_builder.svg)
+
+> **Figure 2**: Interactive React Flow visual editor featuring the **Left Node Catalog** (12 custom node definitions), canvas drag-and-drop routing with dual-output `IF` branching handles, top version restoration bar (`v3`), debounced autosave badge, and the **Right Node Config Inspector** for live parameter configuration.
+
+---
+
+### 3. Asynchronous Execution Monitoring Dashboard
+
+![Execution Runs Dashboard](screenshots/executions_dashboard.svg)
+
+> **Figure 3**: Real-time execution monitoring table listing background execution jobs triggered via webhooks, manual runs, or server-side crons. Displays execution status badges (`SUCCESS`, `RUNNING`, `FAILED`), workflow names, execution IDs, timestamps, and duration metrics in milliseconds.
+
+---
+
+### 4. Visual Execution Step Log Inspector
+
+![Visual Step Log Inspector](screenshots/execution_inspector.svg)
+
+> **Figure 4**: Visual step-by-step execution inspector showing node execution order, per-step status, step duration breakdown, and JSON inspection drawers for **Input Data Payload** and **Output Data Payload** with real-time status polling.
+
+---
+
+### 5. Secure Credential Manager & Infrastructure Health
+
+![Credential Store & Infrastructure Health](screenshots/credential_manager.svg)
+
+> **Figure 5**: Secure Credential Store allowing users to manage isolated integration credentials (`Slack Webhook`, `SMTP Email`, `PostgreSQL DB`) by ID without embedding raw passwords in canvas JSON. Also displays live health telemetry for the Express REST API, PostgreSQL Database, and Redis/BullMQ background queue.
+
+---
+
 ## 🏗️ Architecture Overview
 
 ```mermaid
@@ -52,6 +94,12 @@ graph TD
 workflow-automation-platform/
 ├── database/
 │   └── init.sql                   # Complete PostgreSQL schema (users, workflows, versions, executions, credentials)
+├── screenshots/
+│   ├── dashboard.svg              # Dashboard screenshot mockup
+│   ├── workflow_builder.svg       # Visual Builder screenshot mockup
+│   ├── executions_dashboard.svg   # Executions Monitoring screenshot mockup
+│   ├── execution_inspector.svg    # Visual Step Inspector screenshot mockup
+│   └── credential_manager.svg     # Credential Store screenshot mockup
 ├── backend/
 │   ├── src/
 │   │   ├── config/                # Environment variables loader, pg Pool, ioredis, BullMQ queue
