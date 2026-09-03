@@ -175,11 +175,17 @@ export const useWorkflowEditorStore = create((set, get) => ({
 
   // React Flow node changes
   onNodesChange: (changes) => {
+    const isDragging = changes.some((c) => c.type === 'position' && c.dragging);
+
     set((state) => ({
       nodes: applyNodeChanges(changes, state.nodes),
       isDirty: true,
     }));
-    get().triggerAutosave();
+
+    // Trigger autosave only when dragging finishes or non-dragging change occurs
+    if (!isDragging) {
+      get().triggerAutosave();
+    }
   },
 
   // React Flow edge changes
@@ -198,7 +204,7 @@ export const useWorkflowEditorStore = create((set, get) => ({
         {
           ...connection,
           animated: true,
-          style: { stroke: '#6366f1', strokeWidth: 2.5 },
+          style: { stroke: '#0d9488', strokeWidth: 2.5 },
         },
         state.edges
       ),
@@ -215,7 +221,7 @@ export const useWorkflowEditorStore = create((set, get) => ({
     const newNode = {
       id,
       type: 'customNode',
-      position,
+      position: position || { x: 250, y: 150 },
       data: {
         nodeType,
         label: def.label,
