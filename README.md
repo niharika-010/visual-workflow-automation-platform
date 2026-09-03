@@ -8,7 +8,7 @@ A production-style, multi-tenant visual drag-and-drop workflow automation SaaS p
 
 ### 1. Workflows Workspace & SaaS Dashboard
 
-![Workflows Workspace Dashboard](screenshots/dashboard.svg)
+![Workflows Workspace Dashboard](screenshots/dashboard.png)
 
 > **Figure 1**: Multi-tenant workspace dashboard displaying top-level metrics (*Total Workflows*, *Active Workflows*, *Draft Workflows*), real-time search filtering, status pills (`Active`, `Draft`, `Inactive`), and individual workflow cards with quick-action controls.
 
@@ -16,7 +16,7 @@ A production-style, multi-tenant visual drag-and-drop workflow automation SaaS p
 
 ### 2. Visual Drag-and-Drop Workflow Builder
 
-![Visual Workflow Builder](screenshots/workflow_builder.svg)
+![Visual Workflow Builder](screenshots/workflow_builder.png)
 
 > **Figure 2**: Interactive React Flow visual editor featuring the **Left Node Catalog** (12 custom node definitions), canvas drag-and-drop routing with dual-output `IF` branching handles, top version restoration bar (`v3`), debounced autosave badge, and the **Right Node Config Inspector** for live parameter configuration.
 
@@ -24,7 +24,7 @@ A production-style, multi-tenant visual drag-and-drop workflow automation SaaS p
 
 ### 3. Asynchronous Execution Monitoring Dashboard
 
-![Execution Runs Dashboard](screenshots/executions_dashboard.svg)
+![Execution Runs Dashboard](screenshots/executions_dashboard.png)
 
 > **Figure 3**: Real-time execution monitoring table listing background execution jobs triggered via webhooks, manual runs, or server-side crons. Displays execution status badges (`SUCCESS`, `RUNNING`, `FAILED`), workflow names, execution IDs, timestamps, and duration metrics in milliseconds.
 
@@ -32,7 +32,7 @@ A production-style, multi-tenant visual drag-and-drop workflow automation SaaS p
 
 ### 4. Visual Execution Step Log Inspector
 
-![Visual Step Log Inspector](screenshots/execution_inspector.svg)
+![Visual Step Log Inspector](screenshots/execution_inspector.png)
 
 > **Figure 4**: Visual step-by-step execution inspector showing node execution order, per-step status, step duration breakdown, and JSON inspection drawers for **Input Data Payload** and **Output Data Payload** with real-time status polling.
 
@@ -40,7 +40,7 @@ A production-style, multi-tenant visual drag-and-drop workflow automation SaaS p
 
 ### 5. Secure Credential Manager & Infrastructure Health
 
-![Credential Store & Infrastructure Health](screenshots/credential_manager.svg)
+![Credential Store & Infrastructure Health](screenshots/credential_manager.png)
 
 > **Figure 5**: Secure Credential Store allowing users to manage isolated integration credentials (`Slack Webhook`, `SMTP Email`, `PostgreSQL DB`) by ID without embedding raw passwords in canvas JSON. Also displays live health telemetry for the Express REST API, PostgreSQL Database, and Redis/BullMQ background queue.
 
@@ -95,11 +95,11 @@ workflow-automation-platform/
 ├── database/
 │   └── init.sql                   # Complete PostgreSQL schema (users, workflows, versions, executions, credentials)
 ├── screenshots/
-│   ├── dashboard.svg              # Dashboard screenshot mockup
-│   ├── workflow_builder.svg       # Visual Builder screenshot mockup
-│   ├── executions_dashboard.svg   # Executions Monitoring screenshot mockup
-│   ├── execution_inspector.svg    # Visual Step Inspector screenshot mockup
-│   └── credential_manager.svg     # Credential Store screenshot mockup
+│   ├── dashboard.png              # High-resolution Dashboard screenshot
+│   ├── workflow_builder.png       # High-resolution Visual Builder screenshot
+│   ├── executions_dashboard.png   # High-resolution Executions Monitoring screenshot
+│   ├── execution_inspector.png    # High-resolution Visual Step Inspector screenshot
+│   └── credential_manager.png     # High-resolution Credential Store screenshot
 ├── backend/
 │   ├── src/
 │   │   ├── config/                # Environment variables loader, pg Pool, ioredis, BullMQ queue
@@ -250,14 +250,6 @@ node src/test_full_suite.js
 - `POST /api/credentials` - Store encrypted/isolated integration credential.
 - `GET /api/credentials` - List user credentials (secrets masked).
 - `DELETE /api/credentials/:id` - Delete credential.
-
----
-
-## 🔮 Future Improvements
-
-1. **Sub-workflows**: Allow invoking nested workflows as custom action nodes.
-2. **WebSocket Real-Time Canvas Execution Animations**: Animate active node borders live on the React Flow canvas during execution.
-3. **Advanced Expressions & Handlebars Templating**: Support `{{ $node["Webhook"].json.body.email }}` dynamic field mapping.
 
 ---
 
