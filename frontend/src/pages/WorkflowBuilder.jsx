@@ -15,8 +15,24 @@ import { NodeConfigPanel } from '../components/editor/NodeConfigPanel';
 import { EditorHeader } from '../components/editor/EditorHeader';
 import { Loader2, AlertCircle } from 'lucide-react';
 
+// Register all supported node types so React Flow renders CustomNode reliably
 const nodeTypes = {
   customNode: CustomNode,
+  manual: CustomNode,
+  webhook: CustomNode,
+  schedule: CustomNode,
+  httpRequest: CustomNode,
+  email: CustomNode,
+  slack: CustomNode,
+  code: CustomNode,
+  if: CustomNode,
+  switch: CustomNode,
+  delay: CustomNode,
+  postgres: CustomNode,
+  redis: CustomNode,
+  input: CustomNode,
+  output: CustomNode,
+  default: CustomNode,
 };
 
 function CanvasContent() {
@@ -56,7 +72,7 @@ function CanvasContent() {
   );
 
   return (
-    <div className="flex-1 h-full relative" ref={reactFlowWrapper}>
+    <div className="flex-1 h-full min-h-[500px] min-w-0 relative" ref={reactFlowWrapper}>
       <ReactFlow
         nodes={nodes}
         edges={edges}
@@ -70,7 +86,7 @@ function CanvasContent() {
         onDrop={onDrop}
         deleteKeyCode={['Backspace', 'Delete']}
         fitViewOptions={{ padding: 0.2 }}
-        fitView={nodes.length > 0 ? false : true}
+        fitView
       >
         <Background color="#1e293b" gap={20} size={1.5} />
         <Controls className="bg-slate-900! border-slate-800! text-slate-300! fill-slate-300!" />
@@ -119,10 +135,10 @@ export default function WorkflowBuilder() {
 
   return (
     <ReactFlowProvider>
-      <div className="min-h-screen bg-[#080c14] flex flex-col font-sans overflow-hidden">
+      <div className="min-h-screen h-screen bg-[#080c14] flex flex-col font-sans overflow-hidden">
         <EditorHeader />
 
-        <div className="flex-1 flex overflow-hidden">
+        <div className="flex-1 flex overflow-hidden relative">
           {/* Left Draggable Node Catalog */}
           <NodePanel />
 

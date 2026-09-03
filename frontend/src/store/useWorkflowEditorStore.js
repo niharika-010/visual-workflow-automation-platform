@@ -36,9 +36,27 @@ export const useWorkflowEditorStore = create((set, get) => ({
           ? JSON.parse(wf.workflow_json)
           : wf.workflow_json || { nodes: [], edges: [] };
 
+        const rawNodes = workflowJson.nodes || [];
+        const safeNodes = rawNodes.map((node, index) => {
+          const rawType = node.data?.nodeType || node.type || 'manual';
+          const def = getNodeDefinition(rawType);
+          return {
+            ...node,
+            id: node.id || `node_${index}_${Date.now()}`,
+            type: 'customNode',
+            position: node.position || { x: 250 + index * 200, y: 150 },
+            data: {
+              nodeType: rawType,
+              label: node.data?.label || node.label || def.label,
+              details: node.data?.details || node.details || def.description,
+              config: node.data?.config || node.config || { ...(def.defaultConfig || {}) },
+            },
+          };
+        });
+
         set({
           workflow: wf,
-          nodes: workflowJson.nodes || [],
+          nodes: safeNodes,
           edges: workflowJson.edges || [],
           isDirty: false,
           isLoading: false,
@@ -120,9 +138,27 @@ export const useWorkflowEditorStore = create((set, get) => ({
           ? JSON.parse(wf.workflow_json)
           : wf.workflow_json || { nodes: [], edges: [] };
 
+        const rawNodes = workflowJson.nodes || [];
+        const safeNodes = rawNodes.map((node, index) => {
+          const rawType = node.data?.nodeType || node.type || 'manual';
+          const def = getNodeDefinition(rawType);
+          return {
+            ...node,
+            id: node.id || `node_${index}_${Date.now()}`,
+            type: 'customNode',
+            position: node.position || { x: 250 + index * 200, y: 150 },
+            data: {
+              nodeType: rawType,
+              label: node.data?.label || node.label || def.label,
+              details: node.data?.details || node.details || def.description,
+              config: node.data?.config || node.config || { ...(def.defaultConfig || {}) },
+            },
+          };
+        });
+
         set({
           workflow: wf,
-          nodes: workflowJson.nodes || [],
+          nodes: safeNodes,
           edges: workflowJson.edges || [],
           isDirty: false,
           isSaving: false,
