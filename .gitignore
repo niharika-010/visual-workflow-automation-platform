@@ -1,0 +1,35 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Production build output
+dist/
+build/
+out/
+
+# Environment files
+.env
+.env.local
+.env.production
+.env.development
+
+# Logs & Runtime
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.lock-wscript
+
+# IDE & Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*.ds_store
+Thumbs.db
+
+# Database & Volume persistence data (if mounted locally)
+postgres_data/
+redis_data/
